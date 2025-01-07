@@ -20,11 +20,23 @@ const CurrencyList =  Object.keys(CurrList)
       <div className='pb-10'>
         <div className='justify-self-center min-h-20 m-12 '>
           <Input/>
-          <input className='mx-6 min-h-20 border-2 mx-10 p-8' type="text"  value={'INR'}/>
-        </div>
+          <select className='mx-6 min-h-20 border-2 mx-10 p-8' name="" id="">
+
+          {CurrencyList.map((item)=>{
+            return <option value="">{item}</option>
+          })}
+
+          </select>
+           </div>
         <div className='justify-self-center min-h-20 m-12'>
           <input className='min-h-20 border-2 mx-10 p-8' type="text" placeholder='To'/>
-          <input className='mx-6 min-h-20 mx-10 p-8 border-2' type="text" value={'USD'}/>
+          <select className='mx-6 min-h-20 border-2 mx-10 p-8' name="" id="">
+
+          {CurrencyList.map((item)=>{
+            return <option value="">{item}</option>
+          })}
+
+    </select>
         </div>
       </div>
     </div>
