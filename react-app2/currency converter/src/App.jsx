@@ -7,8 +7,10 @@ function App() {
   const [count, setCount] = useState(0)
   const [currency, setCurrency] = useState('usd')
 
-console.log(useCurrency(currency))
-  
+const CurrList = useCurrency(currency)
+const CurrencyList =  Object.keys(CurrList)
+
+
   return (
     <>
     <div className=' shadow-lg shadow-black-500/50 w-3/5 mt-28 place-self-center'>
@@ -18,7 +20,7 @@ console.log(useCurrency(currency))
       <div className='pb-10'>
         <div className='justify-self-center min-h-20 m-12 '>
           <Input/>
-          <input className='mx-6 min-h-20 border-2 mx-10 p-8' type="text" value={'INR'}/>
+          <input className='mx-6 min-h-20 border-2 mx-10 p-8' type="text"  value={'INR'}/>
         </div>
         <div className='justify-self-center min-h-20 m-12'>
           <input className='min-h-20 border-2 mx-10 p-8' type="text" placeholder='To'/>
