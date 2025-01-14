@@ -4,11 +4,17 @@ import './App.css'
 import Input from './components/input'
 
 function App() {
+
   const [count, setCount] = useState(0)
   const [currency, setCurrency] = useState('usd')
 
 const CurrList = useCurrency(currency)
 const CurrencyList =  Object.keys(CurrList)
+
+function optionChanged(e){
+  console.log(e.target.value)
+  setCurrency(e.target.value)
+}
 
 
   return (
@@ -30,10 +36,10 @@ const CurrencyList =  Object.keys(CurrList)
            </div>
         <div className='justify-self-center min-h-20 m-12'>
           <input className='min-h-20 border-2 mx-10 p-8' type="text" placeholder='To'/>
-          <select className='mx-6 min-h-20 border-2 mx-10 p-8' name="" id="">
+          <select onChange={optionChanged} className='mx-6 min-h-20 border-2 mx-10 p-8' name="" id="">
 
           {CurrencyList.map((item)=>{
-            return <option value="">{item}</option>
+            return <option onChange={optionChanged} value="">{item}</option>
           })}
 
     </select>
