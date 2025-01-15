@@ -4,19 +4,23 @@ import './App.css'
 import Input from './components/input'
 
 function App() {
+  const [fromValue, setFromValue] = useState(0)
+  const [toValue, setToValue] = useState(0)
+  const [from, setFrom] = useState('usd')
+  const [to, setTo] = useState('inr')
 
-  const [count, setCount] = useState(0)
-  const [currency, setCurrency] = useState('usd')
+
+  const currency = ('usd')
 
 const CurrList = useCurrency(currency)
 const CurrencyList =  Object.keys(CurrList)
 
-function optionChanged(e){
-  console.log(e.target.value)
-  setCurrency(e.target.value)
-}
-
-
+function optionChangedFrom(e){ 
+  setFrom(e.target.value)
+ }
+ function optionChangedTo(e){ 
+  setTo(e.target.value)
+ }
   return (
     <>
     <div className=' shadow-lg shadow-black-500/50 w-3/5 mt-28 place-self-center'>
@@ -25,21 +29,23 @@ function optionChanged(e){
       </div>  
       <div className='pb-10'>
         <div className='justify-self-center min-h-20 m-12 '>
-          <Input/>
-          <select className='mx-6 min-h-20 border-2 mx-10 p-8' name="" id="">
+        
+        <input value={fromValue} onChange={setFromValue} className='min-h-20 border-2 mx-10 p-8' type="text" placeholder='From'/>
 
-          {CurrencyList.map((item)=>{
-            return <option value="">{item}</option>
+          <select value={from} onChange={optionChangedFrom} className='mx-6 min-h-20 border-2 mx-10 p-8' name="" id="">
+
+          {CurrencyList.map((item, index)=>{
+            return <option key={index} value={item}>{item}</option>
           })}
 
           </select>
            </div>
         <div className='justify-self-center min-h-20 m-12'>
-          <input className='min-h-20 border-2 mx-10 p-8' type="text" placeholder='To'/>
-          <select onChange={optionChanged} className='mx-6 min-h-20 border-2 mx-10 p-8' name="" id="">
+          <input value={toValue} onChange={setToValue} className='min-h-20 border-2 mx-10 p-8' type="text" placeholder='To'/>
+          <select value={to} onChange={optionChangedTo} className='mx-6 min-h-20 border-2 mx-10 p-8' name="" id="">
 
-          {CurrencyList.map((item)=>{
-            return <option onChange={optionChanged} value="">{item}</option>
+          {CurrencyList.map((item, index)=>{
+            return <option key={index} value={item}>{item}</option>
           })}
 
     </select>
