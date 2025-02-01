@@ -1,11 +1,8 @@
+import Input from "./components/Input";
 function App() {
   return (
       <>
-      
-        <h1>
-          Task Manager
-        </h1>
-      
+    <Input></Input>      
       </>
   );
 }
