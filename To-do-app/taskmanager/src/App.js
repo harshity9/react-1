@@ -1,8 +1,11 @@
 import Input from "./components/Input";
+import TaskList from "./components/TaskList";
 function App() {
+  
   return (
       <>
-    <Input></Input>      
+    <Input></Input>    
+    <TaskList></TaskList>  
       </>
   );
 }
