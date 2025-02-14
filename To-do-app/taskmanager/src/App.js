@@ -34,9 +34,9 @@ function App(){
     return (
         <TodoProvider value={{todos, addTodo,updateTodo, deleteTodo}}>
         <div className="Addtodo">
-           <h1>
+           <h2>
             Manage Todo
-           </h1>
+           </h2>
            <TodoForm></TodoForm>
         </div>
         <div>
