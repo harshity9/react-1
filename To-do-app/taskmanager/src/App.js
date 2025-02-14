@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { TodoProvider } from "./context/TodoContext"
+import TodoForm from "./components/TodoForm"
+import TodoItem from "./components/TodoItem"
 
 
 function App(){
@@ -17,23 +19,37 @@ function App(){
         setTodos((prev)=> prev.filter((todo)=>todo.id !== id))
     }
 
+    useEffect(()=>{
+        const todos = JSON.parse(localStorage.getItem("todos"))
+
+        if (todos && todos.length>0){
+            setTodos(todos)
+        }
+    },[])
+
+    useEffect(()=>{
+        localStorage.setItem("todos", JSON.stringify(todos))
+    }, [todos])
+
     return (
         <TodoProvider value={{todos, addTodo,updateTodo, deleteTodo}}>
         <div className="Addtodo">
            <h1>
             Manage Todo
            </h1>
-            <input>Add task</input>
-            <button>+</button>
+           <TodoForm></TodoForm>
         </div>
         <div>
-            <p>
-                task1
-            </p>
-            <p>
-                task2
-            </p>
+           
+                {todos.map((todo)=>(
+                   <div key={todo.id}>
+                    <TodoItem todo={todo}/>
+                   </div> 
+                ))}
+          
         </div>
         </TodoProvider>
     )
 }
+ 
+export default App;
